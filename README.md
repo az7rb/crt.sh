@@ -15,8 +15,6 @@ Step 2:
 ```
 cd crt.sh/
 ```
-![alt text](https://i.ibb.co/qsYkdqb/apikey.png)
-
 Step 3:
 ```
 chmod +x crt.sh
