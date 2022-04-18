@@ -12,7 +12,7 @@ echo "
 	requestsearch="$(curl -s "https://crt.sh?q=%.$domain&output=json")"
 		 
 			 echo $requestsearch > search.txt
-			 cat search.txt | jq ".[].common_name,.[].name_value"| cut -d'"' -f2 | sed 's/\\n/\n/g' | sed 's/\*.//g' | sort | uniq > output/$domain.txt
+			 cat search.txt | jq ".[].common_name,.[].name_value"| cut -d'"' -f2 | sed 's/\\n/\n/g' | sed 's/\*.//g'| sed -r 's/([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})//g' |sort | uniq > output/$domain.txt
 			 rm search.txt
 			 echo ""
 			 cat output/$domain.txt
