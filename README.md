@@ -5,9 +5,7 @@ This bash script makes it easy to quickly save and parse the output from https:/
 
 Usage is pretty simple.
 
-![alt text](https://raw.githubusercontent.com/az7rb/crt.sh/main/Screenshot/Screenshot_org.png)
-
-![alt text](https://raw.githubusercontent.com/az7rb/crt.sh/main/Screenshot/Screenshot_Domain.png)
+![alt text](https://raw.githubusercontent.com/az7rb/crt.sh/main/Screenshot/Screenshot_org.png) ![alt text](https://raw.githubusercontent.com/az7rb/crt.sh/main/Screenshot/Screenshot_Domain.png)
 
 Step 1:
 ```
