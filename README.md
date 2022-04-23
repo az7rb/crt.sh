@@ -5,7 +5,7 @@ This bash script makes it easy to quickly save and parse the output from https:/
 
 Usage is pretty simple.
 
-![alt text](https://i.ibb.co/sVbzXPc/Screenshot.png)
+![alt text](https://raw.githubusercontent.com/az7rb/crt.sh/main/Screenshot/Screenshot_help.png)
 
 Step 1:
 ```
@@ -21,8 +21,11 @@ chmod +x crt.sh
 ```
 Step 4:
 ```
-./crt.sh [domain.com]
+./crt.sh -h
 ```
+Exemple :
+![alt text](https://raw.githubusercontent.com/az7rb/crt.sh/main/Screenshot/Screenshot_org.png)
+![alt text](https://raw.githubusercontent.com/az7rb/crt.sh/main/Screenshot/Screenshot_Domain.png)
 
 This will write all of the enumerated subdomains to the specified output file and will be ready to be passed to other tools.
 
