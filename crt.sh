@@ -11,7 +11,7 @@ echo "
 	Help()
 {
    # Display Help
-   echo "options:"
+   echo "Options:"
    echo ""
    echo "-h     Help"
    echo "-d     Search Domain Name       | Example: $0 -d hackerone.com"
