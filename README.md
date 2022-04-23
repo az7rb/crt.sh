@@ -24,9 +24,6 @@ Step 4:
 ./crt.sh -h
 ```
 
-![alt text](https://raw.githubusercontent.com/az7rb/crt.sh/main/Screenshot/Screenshot_Org.png) ![alt text](https://raw.githubusercontent.com/az7rb/crt.sh/main/Screenshot/Screenshot_Domain.png)
-
-
 This will write all of the enumerated subdomains to the specified output file and will be ready to be passed to other tools.
 
 Happy hunting!
