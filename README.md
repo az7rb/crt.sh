@@ -17,7 +17,7 @@ Step 2:
 ```
 Example :
 ```
-$0 -d hackerone.com | httpx
+./crt.sh -d hackerone.com | httpx
 ```
 
 This will write all of the enumerated subdomains to the specified output file and will be ready to be passed to other tools.
