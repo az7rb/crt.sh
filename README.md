@@ -15,6 +15,10 @@ Step 2:
 ```
 ./crt.sh -h
 ```
+Example :
+```
+$0 -d hackerone.com | httpx
+```
 
 This will write all of the enumerated subdomains to the specified output file and will be ready to be passed to other tools.
 
