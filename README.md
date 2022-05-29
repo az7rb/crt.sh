@@ -9,17 +9,9 @@ Usage is pretty simple.
 
 Step 1:
 ```
-git clone https://github.com/az7rb/crt.sh.git
+git clone https://github.com/az7rb/crt.sh.git && cd crt.sh/ && chmod +x crt.sh
 ```
 Step 2:
-```
-cd crt.sh/
-```
-Step 3:
-```
-chmod +x crt.sh
-```
-Step 4:
 ```
 ./crt.sh -h
 ```
