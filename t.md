@@ -29,6 +29,9 @@ cirrusgo salesforce -u https://localhost/ -f
 ```
 cirusgo salesforce -u https://localhost/ -cw
 ```
+
+**Example Help:**
+
 ```
 cirrusgo --help
 ```
