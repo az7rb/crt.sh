@@ -1,8 +1,6 @@
 ## CirrusGo
 A fast tool to scan SAAS,PAAS vulnerability written in Go
 
-**Note flag -o output not working**
-
 SAAS App Support :
 
 - salesforce
@@ -29,6 +27,8 @@ cirrusgo salesforce -u https://localhost/ -f
 ```
 cirusgo salesforce -u https://localhost/ -cw
 ```
+
+**Note flag -o output not working**
 
 **Example Help:**
 
