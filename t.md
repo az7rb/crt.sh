@@ -14,7 +14,7 @@ A fast tool to scan SAAS,PAAS vulnerability written in Go
 ```
 go install -v github.com/Ph33rr/CirrusGo/cmd/cirrusgo@latest
 ```
-
+**Example :**
 
 ```
 cirrusgo salesforce -u https://loclhost -gobj
