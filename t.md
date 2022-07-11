@@ -3,7 +3,7 @@ A fast tool to scan SAAS,PAAS vulnerability written in Go
 
 **Note flag -o output not working**
 
-# SAAS App Support :
+SAAS App Support :
 
 - salesforce
 - contentful (next version)
