@@ -6,6 +6,7 @@ SAAS App Support :
 - salesforce
 - contentful (next version)
 
+**Note flag -o output not working**
 
 **install :**
 
@@ -27,8 +28,6 @@ cirrusgo salesforce -u https://localhost/ -f
 ```
 cirusgo salesforce -u https://localhost/ -cw
 ```
-
-**Note flag -o output not working**
 
 **Example Help:**
 
