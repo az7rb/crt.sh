@@ -3,7 +3,7 @@
 This bash script makes it easy to quickly save and parse the output from https://crt.sh website.
  to be sent to tools like httpx!
 
-Usage is pretty simple.
+Usage is pretty simple :
 
 ![alt text](https://raw.githubusercontent.com/az7rb/crt.sh/main/Screenshot/Screenshot_Help.png)
 
