@@ -22,6 +22,6 @@ Example :
 
 This will write all of the enumerated subdomains to the specified output file and will be ready to be passed to other tools.
 
-Don't forget to visit [BugBountyzip]([https://github.com/BugBountyzip)
+Don't forget to visit [BugBountyzip](https://github.com/BugBountyzip)
 
 Happy hunting!
