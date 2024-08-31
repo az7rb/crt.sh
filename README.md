@@ -66,12 +66,9 @@ For a quick visual guide, refer to the screenshot below:
 
 ![Help Screenshot](https://raw.githubusercontent.com/az7rb/crt.sh/main/Screenshot/Screenshot_Help.png)
 
+---
 ### Additional Resources
 
 Don't forget to visit [BugBountyzip](https://github.com/BugBountyzip) for more tools and resources.
 
 Happy hunting! 🎯
-
----
-
-This documentation provides clear instructions on using both versions of the script, ensuring that users can easily set up and switch between the original and the new enhanced version.
