@@ -1,0 +1,18 @@
+project_name: "crt.sh"
+
+output_directory: "./docs"
+
+exclude:
+  - "crt.sh"
+
+parsers:
+  tag_prefix: "@"
+
+  module:
+    style:
+      char: "="
+      min_length: 10
+
+  function:
+    start_marker: "##!"
+    end_marker: "#'"

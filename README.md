@@ -1,3 +1,30 @@
+### Updated Docs after new changes ([@TheArqsz](https://github.com/TheArqsz))
+
+The logic of the script was changed a little bit so one can use it more freely in the automated environment and it aligns more with popular security tools.
+
+Updated usage:
+
+```bash
+A script to query the crt.sh certificate transparency log.
+
+Usage: ./crt_v2.sh [OPTIONS]
+
+Options:
+  -d, --domain <domain>        Search for a specific domain name (e.g., hackerone.com)
+      --org <organization>     Search for a specific organization name (e.g., 'HackerOne, Inc.')
+  -o, --output <file>          File to save results. If not set, results are printed to stdout.
+  -s, --silent                 Suppress banner and non-essential output.
+  -h, --help                   Display this help message
+
+Examples:
+  ./crt_v2.sh --domain hackerone.com
+  ./crt_v2.sh --org 'HackerOne, Inc.' --output ./results.txt
+  ./crt_v2.sh -d example.com -s | grep '.com'
+  ./crt_v2.sh -d example.com -s | httpx
+```
+
+All the original credits go to [az7rb](https://github.com/az7rb)
+
 ### Updated Documentation for crt.sh v2.0
 
 The **v2.0** version of the script, now named `crt_v2.sh`, introduces significant improvements in performance, reliability, and documentation. Below are the updated instructions for setting up and using both the original script `crt.sh` and the new `crt_v2.sh`:
@@ -64,7 +91,7 @@ Both commands will enumerate subdomains for `hackerone.com` and output them in a
 
 For a quick visual guide, refer to the screenshot below:
 
-![Help Screenshot](https://raw.githubusercontent.com/az7rb/crt.sh/main/Screenshot/Screenshot_Help.png)
+![Help Screenshot](images/Screenshot_Help.png)
 
 ---
 ### Additional Resources
