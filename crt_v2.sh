@@ -74,8 +74,8 @@ Domain() {
     echo ""
     echo "$results"
     echo ""
-    echo -e "\e[32m[+]\e[0m Total Save will be \e[31m$(echo "$results" | wc -l)\e[0m Domain only"
-    echo -e "\e[32m[+]\e[0m Output saved in $output_file"
+    echo -e "\033[32m[+]\033[0m Total Save will be \033[31m$(echo "$results" | wc -l)\033[0m Domain only"
+    echo -e "\033[32m[+]\033[0m Output saved in $output_file"
 }
 
 # Function: Organization
@@ -119,8 +119,8 @@ Organization() {
     echo ""
     echo "$results"
     echo ""
-    echo -e "\e[32m[+]\e[0m Total Save will be \e[31m$(echo "$results" | wc -l)\e[0m Domain only"
-    echo -e "\e[32m[+]\e[0m Output saved in $output_file"
+    echo -e "\033[32m[+]\033[0m Total Save will be \033[31m$(echo "$results" | wc -l)\033[0m Domain only"
+    echo -e "\033[32m[+]\033[0m Output saved in $output_file"
 }
 
 # Main Script Logic

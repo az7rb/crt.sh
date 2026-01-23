@@ -29,8 +29,8 @@ echo "
 			 echo ""
 			 cat output/domain.$req.txt
 			 echo ""
-			 echo -e "\e[32m[+]\e[0m Total Save will be \e[31m"$(cat output/domain.$req.txt | wc -l)"\e[0m Domain only"
-			 echo -e "\e[32m[+]\e[0m Output saved in output/domain.$req.txt"
+			 echo -e "\033[32m[+]\033[0m Total Save will be \033[31m"$(cat output/domain.$req.txt | wc -l)"\033[0m Domain only"
+			 echo -e "\033[32m[+]\033[0m Output saved in output/domain.$req.txt"
 }		 
     # Request the Search with Organization Name
 	Organization() {
@@ -42,8 +42,8 @@ echo "
 			 echo ""
 			 cat output/org.$req.txt
 			 echo ""
-			 echo -e "\e[32m[+]\e[0m Total Save will be \e[31m"$(cat output/org.$req.txt | wc -l)"\e[0m Domain only"
-			 echo -e "\e[32m[+]\e[0m Output saved in output/org.$req.txt"
+			 echo -e "\033[32m[+]\033[0m Total Save will be \033[31m"$(cat output/org.$req.txt | wc -l)"\033[0m Domain only"
+			 echo -e "\033[32m[+]\033[0m Output saved in output/org.$req.txt"
 }	
 
 if [ -z $1 ]
