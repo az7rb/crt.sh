@@ -73,7 +73,7 @@
 <circle cx="68" cy="21" r="7" fill="#28c840"/>
 
 <!-- Title bar text -->
-<text x="360" y="26" text-anchor="middle" fill="#6e7681" font-size="12" font-family="system-ui,-apple-system,sans-serif" font-weight="500">bash — crt.sh</text>
+<text x="360" y="26" text-anchor="middle" fill="#6e7681" font-size="12" font-family="system-ui,-apple-system,sans-serif" font-weight="500">Go — crt.sh</text>
 
 <!-- Prompt line -->
 <text class="f a-cmd" x="16" y="68" xml:space="preserve">
