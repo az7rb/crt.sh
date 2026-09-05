@@ -14,7 +14,11 @@ Single binary · No API keys · No dependencies.
 
 </div>
 
+<div align="center">
+
 ![crt.sh demo](demo.svg)
+
+</div>
 
 ---
 
