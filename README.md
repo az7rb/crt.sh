@@ -16,7 +16,7 @@ Single binary · No API keys · No dependencies.
 
 <div align="center">
 
-![crt.sh demo](demo.svg)
+![crt.sh demo](Screenshot/demo.svg)
 
 </div>
 
