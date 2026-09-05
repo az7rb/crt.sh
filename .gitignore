@@ -1,0 +1,21 @@
+# Compiled binaries
+crt.sh
+crt.sh.exe
+ct-hunt
+ct-hunt.exe
+ct-hunt-linux
+ct-hunt-macos
+*.exe
+
+# GoReleaser output
+dist/
+
+# Tool output files
+*_subs.txt
+*_ct.json
+*_burp_scope.json
+test_*.json
+
+# OS
+.DS_Store
+Thumbs.db
