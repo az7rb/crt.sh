@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 475" width="700">
+<style>
+  .f { font-family: 'SFMono-Regular','Cascadia Code','Fira Code','Courier New',Courier,monospace; font-size: 13px; }
+  @keyframes bl1  { 0%,2%  {opacity:0} 3%,79%  {opacity:1} 85%,100%{opacity:0} }
+  @keyframes bl2  { 0%,5%  {opacity:0} 6%,79%  {opacity:1} 85%,100%{opacity:0} }
+  @keyframes bl3  { 0%,8%  {opacity:0} 9%,79%  {opacity:1} 85%,100%{opacity:0} }
+  @keyframes bl4  { 0%,11% {opacity:0} 12%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes bl5  { 0%,14% {opacity:0} 15%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes auth { 0%,17% {opacity:0} 18%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes scan { 0%,20% {opacity:0} 21%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes ph-sh{ 0%,23% {opacity:0} 24%,26% {opacity:1} 27%,100%{opacity:0} }
+  @keyframes ph-cn{ 0%,23% {opacity:0} 24%,36% {opacity:1} 37%,100%{opacity:0} }
+  @keyframes ph-cs{ 0%,23% {opacity:0} 24%,45% {opacity:1} 46%,100%{opacity:0} }
+  @keyframes ph-cr{ 0%,23% {opacity:0} 24%,57% {opacity:1} 58%,100%{opacity:0} }
+  @keyframes st-sh{ 0%,26% {opacity:0} 27%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes st-cn{ 0%,36% {opacity:0} 37%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes st-cs{ 0%,45% {opacity:0} 46%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes st-cr{ 0%,57% {opacity:0} 58%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes res  { 0%,29% {opacity:0} 30%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes s1   { 0%,30% {opacity:0} 31%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes s2   { 0%,31% {opacity:0} 32%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes s3   { 0%,32% {opacity:0} 33%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes s4   { 0%,33% {opacity:0} 34%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes s5   { 0%,38% {opacity:0} 39%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes s6   { 0%,39% {opacity:0} 40%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes s7   { 0%,47% {opacity:0} 48%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes s8   { 0%,59% {opacity:0} 60%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes s9   { 0%,60% {opacity:0} 61%,79% {opacity:1} 85%,100%{opacity:0} }
+  @keyframes fnd  { 0%,62% {opacity:0} 63%,79% {opacity:1} 85%,100%{opacity:0} }
+  .a-bl1  {opacity:0;animation:bl1  12s infinite}
+  .a-bl2  {opacity:0;animation:bl2  12s infinite}
+  .a-bl3  {opacity:0;animation:bl3  12s infinite}
+  .a-bl4  {opacity:0;animation:bl4  12s infinite}
+  .a-bl5  {opacity:0;animation:bl5  12s infinite}
+  .a-auth {opacity:0;animation:auth 12s infinite}
+  .a-scan {opacity:0;animation:scan 12s infinite}
+  .a-ph-sh{opacity:0;animation:ph-sh 12s infinite}
+  .a-ph-cn{opacity:0;animation:ph-cn 12s infinite}
+  .a-ph-cs{opacity:0;animation:ph-cs 12s infinite}
+  .a-ph-cr{opacity:0;animation:ph-cr 12s infinite}
+  .a-st-sh{opacity:0;animation:st-sh 12s infinite}
+  .a-st-cn{opacity:0;animation:st-cn 12s infinite}
+  .a-st-cs{opacity:0;animation:st-cs 12s infinite}
+  .a-st-cr{opacity:0;animation:st-cr 12s infinite}
+  .a-res  {opacity:0;animation:res  12s infinite}
+  .a-s1   {opacity:0;animation:s1   12s infinite}
+  .a-s2   {opacity:0;animation:s2   12s infinite}
+  .a-s3   {opacity:0;animation:s3   12s infinite}
+  .a-s4   {opacity:0;animation:s4   12s infinite}
+  .a-s5   {opacity:0;animation:s5   12s infinite}
+  .a-s6   {opacity:0;animation:s6   12s infinite}
+  .a-s7   {opacity:0;animation:s7   12s infinite}
+  .a-s8   {opacity:0;animation:s8   12s infinite}
+  .a-s9   {opacity:0;animation:s9   12s infinite}
+  .a-fnd  {opacity:0;animation:fnd  12s infinite}
+</style>
+
+<!-- Background -->
+<rect width="700" height="475" fill="#0d1117" rx="8"/>
+
+<!-- Terminal chrome -->
+<rect width="700" height="40" fill="#161b22" rx="8"/>
+<rect y="30" width="700" height="10" fill="#161b22"/>
+<circle cx="22" cy="20" r="6" fill="#ff5f56"/>
+<circle cx="44" cy="20" r="6" fill="#ffbd2e"/>
+<circle cx="66" cy="20" r="6" fill="#27c93f"/>
+<text x="350" y="25" text-anchor="middle" fill="#8b949e" font-size="12" font-family="system-ui,sans-serif">Terminal</text>
+
+<!-- Banner line 1 -->
+<text class="f a-bl1" x="15" y="72" xml:space="preserve" fill="#39c5c8" font-weight="bold">             __         __  </text>
+<!-- Banner line 2 -->
+<text class="f a-bl2" x="15" y="90" xml:space="preserve" fill="#39c5c8" font-weight="bold">  __________/ /_  _____/ /_ </text>
+<!-- Banner line 3 -->
+<text class="f a-bl3" x="15" y="108" xml:space="preserve" fill="#39c5c8" font-weight="bold"> / ___/ ___/ __/ / ___/ __ \</text>
+<!-- Banner line 4 -->
+<text class="f a-bl4" x="15" y="126" xml:space="preserve" fill="#39c5c8" font-weight="bold">/ /__/ /  / /__ (__  ) / / /</text>
+<!-- Banner line 5 + version -->
+<text class="f a-bl5" x="15" y="144" xml:space="preserve" font-weight="bold">
+  <tspan fill="#39c5c8">\___/_/   \__(_)____/_/ /_/  </tspan><tspan fill="#e6edf3">v3.0.0</tspan>
+</text>
+
+<!-- az7rb -->
+<text class="f a-auth" x="350" y="166" text-anchor="middle" fill="#7d8590">az7rb</text>
+
+<!-- [*] Scanning -->
+<text class="f a-scan" x="15" y="192" xml:space="preserve">
+  <tspan fill="#1c74e9">[*]</tspan><tspan fill="#e6edf3"> Scanning </tspan><tspan fill="#e6edf3" font-weight="bold">hackerone.com</tspan>
+</text>
+
+<!-- Source placeholders (○) -->
+<text class="f a-ph-cr"  x="15" y="212" fill="#7d8590" xml:space="preserve">    ○  crt.sh        </text>
+<text class="f a-ph-cs"  x="15" y="230" fill="#7d8590" xml:space="preserve">    ○  certspotter   </text>
+<text class="f a-ph-cn"  x="15" y="248" fill="#7d8590" xml:space="preserve">    ○  crt.name      </text>
+<text class="f a-ph-sh"  x="15" y="266" fill="#7d8590" xml:space="preserve">    ○  shodan-ctl    </text>
+
+<!-- Source status lines (✔) — overlay at same y positions -->
+<!-- shodan-ctl: first [263ms] -->
+<text class="f a-st-sh" x="15" y="266" xml:space="preserve">
+  <tspan fill="#3fb950">    ✔  </tspan><tspan fill="#e6edf3">shodan-ctl    </tspan><tspan fill="#7d8590"> → </tspan><tspan fill="#e6edf3" font-weight="bold">9</tspan><tspan fill="#7d8590"> found [263ms]</tspan>
+</text>
+<!-- crt.name: [471ms] -->
+<text class="f a-st-cn" x="15" y="248" xml:space="preserve">
+  <tspan fill="#3fb950">    ✔  </tspan><tspan fill="#e6edf3">crt.name      </tspan><tspan fill="#7d8590"> → </tspan><tspan fill="#e6edf3" font-weight="bold">31</tspan><tspan fill="#7d8590"> found [471ms]</tspan>
+</text>
+<!-- certspotter: [688ms] -->
+<text class="f a-st-cs" x="15" y="230" xml:space="preserve">
+  <tspan fill="#3fb950">    ✔  </tspan><tspan fill="#e6edf3">certspotter   </tspan><tspan fill="#7d8590"> → </tspan><tspan fill="#e6edf3" font-weight="bold">9</tspan><tspan fill="#7d8590"> found [688ms]</tspan>
+</text>
+<!-- crt.sh: [7412ms] -->
+<text class="f a-st-cr" x="15" y="212" xml:space="preserve">
+  <tspan fill="#3fb950">    ✔  </tspan><tspan fill="#e6edf3">crt.sh        </tspan><tspan fill="#7d8590"> → </tspan><tspan fill="#e6edf3" font-weight="bold">15</tspan><tspan fill="#7d8590"> found [7412ms]</tspan>
+</text>
+
+<!-- [+] Results header -->
+<text class="f a-res" x="15" y="288" xml:space="preserve" font-weight="bold">
+  <tspan fill="#3fb950">[+]</tspan><tspan fill="#e6edf3"> Results</tspan>
+</text>
+
+<!-- Subdomains -->
+<text class="f a-s1" x="15" y="308" fill="#e6edf3">api.hackerone.com</text>
+<text class="f a-s2" x="15" y="326" fill="#e6edf3">docs.hackerone.com</text>
+<text class="f a-s3" x="15" y="344" fill="#e6edf3">support.hackerone.com</text>
+<text class="f a-s4" x="15" y="362" fill="#e6edf3">www.hackerone.com</text>
+<text class="f a-s5" x="15" y="380" fill="#e6edf3">3d.hackerone.com</text>
+<text class="f a-s6" x="15" y="398" fill="#e6edf3">resources.hackerone.com</text>
+<text class="f a-s7" x="15" y="416" fill="#e6edf3">gslink.hackerone.com</text>
+<text class="f a-s8" x="15" y="434" fill="#e6edf3">websockets.hackerone.com</text>
+
+<!-- [+] Found -->
+<text class="f a-fnd" x="15" y="458" xml:space="preserve" font-weight="bold">
+  <tspan fill="#3fb950">[+]</tspan><tspan fill="#e6edf3"> Found </tspan><tspan fill="#e6edf3">33</tspan><tspan fill="#e6edf3"> unique subdomains for </tspan><tspan fill="#39c5c8">hackerone.com</tspan><tspan fill="#7d8590"> [7.5s]</tspan>
+</text>
+</svg>

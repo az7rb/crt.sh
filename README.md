@@ -14,6 +14,8 @@ Single binary · No API keys · No dependencies.
 
 </div>
 
+![crt.sh demo](demo.svg)
+
 ---
 
 ## Install
