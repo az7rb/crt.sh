@@ -25,7 +25,7 @@ Single binary · No API keys · No dependencies.
 ## Install
 
 ```bash
-go install github.com/az7rb/crt.sh/v3@v3.0.1
+go install github.com/az7rb/crt.sh/v3@latest
 ```
 
 <details>
