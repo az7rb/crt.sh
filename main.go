@@ -17,12 +17,46 @@ import (
 	"regexp"
 	"runtime"
 	"sort"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
+
+	"golang.org/x/term"
 )
 
 var version = "3.0.1"
+
+// ── Terminal helpers ──────────────────────────────────────────────────────────
+
+func termSize() (int, int) {
+	w, h, err := term.GetSize(int(os.Stderr.Fd()))
+	if err != nil || w <= 0 {
+		w = 80
+	}
+	if err != nil || h <= 0 {
+		h = 24
+	}
+	return w, h
+}
+
+func versionLess(a, b string) bool {
+	pa := strings.SplitN(a, ".", 3)
+	pb := strings.SplitN(b, ".", 3)
+	for i := 0; i < 3; i++ {
+		av, bv := 0, 0
+		if i < len(pa) {
+			av, _ = strconv.Atoi(pa[i])
+		}
+		if i < len(pb) {
+			bv, _ = strconv.Atoi(pb[i])
+		}
+		if av != bv {
+			return av < bv
+		}
+	}
+	return false
+}
 
 // ── ANSI colors ───────────────────────────────────────────────────────────────
 
@@ -296,9 +330,6 @@ func fetchCertspotter(domain string) ([]string, error) {
 
 	for {
 		page++
-		if page > 1 && !quietMode {
-			fmt.Fprintf(os.Stderr, cDim+"         certspotter  page %d...\r"+cReset, page)
-		}
 		u := "https://api.certspotter.com/v1/issuances?domain=" +
 			url.QueryEscape(domain) +
 			"&include_subdomains=true&expand=dns_names"
@@ -449,13 +480,11 @@ func huntDomain(domain string, skip map[string]bool, onFresh func([]string)) Hun
 	}
 	n := len(activeSources)
 
-	// Assign a fixed line index to each source for ANSI cursor targeting
 	sourceIdx := make(map[string]int, n)
 	for i, s := range activeSources {
 		sourceIdx[s.name] = i
 	}
 
-	// Print pending placeholders so the source block is reserved upfront
 	if !quietMode {
 		for _, s := range activeSources {
 			fmt.Fprintf(os.Stderr, "    "+cDim+"○"+cReset+"  %-14s\n", s.name)
@@ -475,39 +504,47 @@ func huntDomain(domain string, skip map[string]bool, onFresh func([]string)) Hun
 	}
 	go func() { wg.Wait(); close(ch) }()
 
+	_, th := termSize()
 	globalSeen := make(map[string]struct{})
 	var allNames []string
-	subLinesCount := 0 // lines printed below source block (header + subdomain lines)
 	headerPrinted := false
+	subLinesCount := 0
 
 	for r := range ch {
 		stat := SourceStats{DurationMs: r.durationMs}
+		idx := sourceIdx[r.name]
+		goUp := (n - idx) + subLinesCount
+
+		if r.err != nil {
+			stat.Error = r.err.Error()
+			result.Sources[r.name] = stat
+			if !quietMode && goUp < th {
+				statusLine := fmt.Sprintf("    "+cRed+"✗"+cReset+"  %-14s "+cDim+"→ error: %v [%dms]"+cReset,
+					r.name, r.err, r.durationMs)
+				fmt.Fprintf(os.Stderr, "\033[%dA\033[2K\r%s\033[%dB\r", goUp, statusLine, goUp)
+			}
+			continue
+		}
+
+		filtered := filterSource(r.names, domain)
+		fresh := globalDedup(filtered, globalSeen)
+		stat.Count = len(filtered)
+		result.Sources[r.name] = stat
+		allNames = append(allNames, fresh...)
 
 		if !quietMode {
-			idx := sourceIdx[r.name]
-			goUp := (n - idx) + subLinesCount
-			fmt.Fprintf(os.Stderr, "\033[%dA\033[2K\r", goUp)
-			if r.err != nil {
-				fmt.Fprintf(os.Stderr, "    "+cRed+"✗"+cReset+"  %-14s "+cDim+"→ error: %v [%dms]"+cReset,
-					r.name, r.err, r.durationMs)
-				fmt.Fprintf(os.Stderr, "\033[%dB\r", goUp)
-				stat.Error = r.err.Error()
-				result.Sources[r.name] = stat
-				continue
-			}
-			filtered := filterSource(r.names, domain)
+			var statusLine string
 			if len(filtered) > 0 {
-				fmt.Fprintf(os.Stderr, "    "+cGreen+"✔"+cReset+"  %-14s "+cDim+"→"+cReset+" "+cBold+"%d"+cReset+" "+cDim+"found [%dms]"+cReset,
+				statusLine = fmt.Sprintf("    "+cGreen+"✔"+cReset+"  %-14s "+cDim+"→"+cReset+" "+cBold+"%d"+cReset+" "+cDim+"found [%dms]"+cReset,
 					r.name, len(filtered), r.durationMs)
 			} else {
-				fmt.Fprintf(os.Stderr, "    "+cRed+"✗"+cReset+"  %-14s "+cDim+"→ no results [%dms]"+cReset,
+				statusLine = fmt.Sprintf("    "+cRed+"✗"+cReset+"  %-14s "+cDim+"→ no results [%dms]"+cReset,
 					r.name, r.durationMs)
 			}
-			fresh := globalDedup(filtered, globalSeen)
-			stat.Count = len(filtered)
-			result.Sources[r.name] = stat
-			allNames = append(allNames, fresh...)
-			fmt.Fprintf(os.Stderr, "\033[%dB\r", goUp)
+			if goUp < th {
+				fmt.Fprintf(os.Stderr, "\033[%dA\033[2K\r%s\033[%dB\r", goUp, statusLine, goUp)
+			}
+
 			if len(fresh) > 0 {
 				if !headerPrinted {
 					fmt.Fprintf(os.Stderr, "\n"+cBold+cGreen+"[+]"+cReset+" "+cBold+"Results"+cReset+"\n")
@@ -519,22 +556,8 @@ func huntDomain(domain string, skip map[string]bool, onFresh func([]string)) Hun
 					subLinesCount++
 				}
 			}
-		} else {
-			// Quiet mode: stream via onFresh callback
-			if r.err != nil {
-				stat.Error = r.err.Error()
-				result.Sources[r.name] = stat
-				continue
-			}
-			filtered := filterSource(r.names, domain)
-			fresh := globalDedup(filtered, globalSeen)
-			stat.Count = len(filtered)
-			result.Sources[r.name] = stat
-			allNames = append(allNames, fresh...)
-			if onFresh != nil && len(fresh) > 0 {
-				onFresh(fresh)
-			}
-			continue
+		} else if onFresh != nil && len(fresh) > 0 {
+			onFresh(fresh)
 		}
 	}
 
@@ -658,7 +681,7 @@ func checkUpdate() {
 
 	latest := strings.TrimPrefix(rel.TagName, "v")
 	current := strings.TrimPrefix(version, "v")
-	if latest != "" && latest != current {
+	if latest != "" && versionLess(current, latest) {
 		updateCh <- fmt.Sprintf(
 			cYellow+"[!]"+cReset+" New version "+cBold+"v%s"+cReset+
 				" available → "+cCyan+"crt.sh -update"+cReset+"\n", latest)
@@ -1042,7 +1065,6 @@ func main() {
 
 		if outFmt == formatText {
 			if !quietMode {
-				fmt.Fprintln(os.Stderr)
 				logOK("Found %s%d%s unique subdomains for %s%s%s %s[%.1fs]%s",
 					cBold, r.Total, cReset,
 					cCyan, domain, cReset,
