@@ -25,7 +25,7 @@ import (
 	"golang.org/x/term"
 )
 
-var version = "3.0.1"
+var version = "3.0.3"
 
 // ── Terminal helpers ──────────────────────────────────────────────────────────
 
