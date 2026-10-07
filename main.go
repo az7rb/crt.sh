@@ -40,22 +40,32 @@ func termSize() (int, int) {
 	return w, h
 }
 
+// versionLess reports whether version a is lower than version b.
+// A leading "v" and surrounding whitespace are ignored, and only the leading
+// digits of each component are compared, so "v3.0.10" > "3.0.9" and
+// "3.0.4-rc1" is treated as 3.0.4.
 func versionLess(a, b string) bool {
-	pa := strings.SplitN(a, ".", 3)
-	pb := strings.SplitN(b, ".", 3)
+	pa := versionParts(a)
+	pb := versionParts(b)
 	for i := 0; i < 3; i++ {
-		av, bv := 0, 0
-		if i < len(pa) {
-			av, _ = strconv.Atoi(pa[i])
-		}
-		if i < len(pb) {
-			bv, _ = strconv.Atoi(pb[i])
-		}
-		if av != bv {
-			return av < bv
+		if pa[i] != pb[i] {
+			return pa[i] < pb[i]
 		}
 	}
 	return false
+}
+
+func versionParts(v string) [3]int {
+	var out [3]int
+	v = strings.TrimPrefix(strings.TrimSpace(v), "v")
+	for i, p := range strings.SplitN(v, ".", 3) {
+		end := 0
+		for end < len(p) && p[end] >= '0' && p[end] <= '9' {
+			end++
+		}
+		out[i], _ = strconv.Atoi(p[:end])
+	}
+	return out
 }
 
 // ── ANSI colors ───────────────────────────────────────────────────────────────
@@ -679,8 +689,8 @@ func checkUpdate() {
 		return
 	}
 
-	latest := strings.TrimPrefix(rel.TagName, "v")
-	current := strings.TrimPrefix(version, "v")
+	latest := strings.TrimPrefix(strings.TrimSpace(rel.TagName), "v")
+	current := strings.TrimPrefix(strings.TrimSpace(version), "v")
 	if latest != "" && versionLess(current, latest) {
 		updateCh <- fmt.Sprintf(
 			cYellow+"[!]"+cReset+" New version "+cBold+"v%s"+cReset+
@@ -731,9 +741,13 @@ func selfUpdate() {
 		os.Exit(1)
 	}
 
-	latest := strings.TrimPrefix(rel.TagName, "v")
-	current := strings.TrimPrefix(version, "v")
-	if latest == current {
+	latest := strings.TrimPrefix(strings.TrimSpace(rel.TagName), "v")
+	current := strings.TrimPrefix(strings.TrimSpace(version), "v")
+	if latest == "" {
+		fmt.Fprintf(os.Stderr, cRed+"[!]"+cReset+" Latest release has no tag\n")
+		os.Exit(1)
+	}
+	if !versionLess(current, latest) {
 		fmt.Fprintf(os.Stderr, cGreen+"[+]"+cReset+" Already on latest version "+cBold+"v%s"+cReset+"\n", current)
 		return
 	}
